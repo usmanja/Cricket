@@ -22,9 +22,6 @@ jobs:
       - name: Install git
         run: sudo apt install git -y
         
-      - name: Install ncftpput
-        run: sudo apt install ncftp -y
-        
       - name: Install inotifywait
         run: sudo apt install inotify-tools -y
 
