@@ -1,10 +1,10 @@
-name: ptv
+name: PTVSports
 
 on:
   workflow_dispatch:
 
 jobs:
-  ptv:
+  PTVSports:
     runs-on: ubuntu-latest
     environment: Cricket
     # timeout-minutes: 1 # Set the maximum duration for the job
