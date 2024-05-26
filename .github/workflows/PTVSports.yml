@@ -1,10 +1,10 @@
-name: ptvsports
+name: ptv
 
 on:
   workflow_dispatch:
 
 jobs:
-  ptvsports:
+  ptv:
     runs-on: ubuntu-latest
     environment: Cricket
     # timeout-minutes: 1 # Set the maximum duration for the job
@@ -21,6 +21,12 @@ jobs:
         
       - name: Install git
         run: sudo apt install git -y
+        
+      - name: Install ncftpput
+        run: sudo apt install ncftp -y
+        
+      - name: Install inotifywait
+        run: sudo apt install inotify-tools -y
 
       - name: Fix issue in downloaded file
         run: dos2unix ptv.sh
