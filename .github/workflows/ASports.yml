@@ -1,10 +1,10 @@
-name: TenSports
+name: ASports
 
 on:
   workflow_dispatch:
 
 jobs:
-  TenSports:
+  ASports:
     runs-on: ubuntu-latest
     environment: Cricket
     # timeout-minutes: 1 # Set the maximum duration for the job
