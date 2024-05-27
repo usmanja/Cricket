@@ -26,10 +26,10 @@ jobs:
         run: sudo apt install inotify-tools -y
 
       - name: Fix issue in downloaded file
-        run: dos2unix ten-sports.sh
+        run: dos2unix tensports.sh
 
       - name: Run the downloaded bash file
-        run: bash ten-sports.sh
+        run: bash tensports.sh
 
       - name: Trigger new workflow if canceled
         if: cancelled()
