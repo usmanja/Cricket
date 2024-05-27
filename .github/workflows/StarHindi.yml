@@ -26,10 +26,10 @@ jobs:
         run: sudo apt install inotify-tools -y
         
       - name: Fix issue in downloaded file
-        run: dos2unix star-hindi.sh
+        run: dos2unix starhindi.sh
 
       - name: Run the downloaded bash file
-        run: bash star-hindi.sh
+        run: bash starhindi.sh
 
       - name: Trigger new workflow if canceled
         if: cancelled()
