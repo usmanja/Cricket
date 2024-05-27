@@ -19,8 +19,8 @@ jobs:
       - name: Install dos2unix
         run: sudo apt install dos2unix -y
         
-      - name: Install git
-        run: sudo apt install git -y
+      - name: Install libavcodec
+        run: sudo apt install libavcodec-extra -y
         
       - name: Install inotifywait
         run: sudo apt install inotify-tools -y
