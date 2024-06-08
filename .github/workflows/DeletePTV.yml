@@ -23,6 +23,9 @@ jobs:
       - name: Change Directory
         run: cd delete-all-deployments
         
+      - name: List files in unzipped directory
+        run: ls -R delete-all-deployments
+        
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
