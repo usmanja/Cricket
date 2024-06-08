@@ -19,13 +19,10 @@ jobs:
 
       - name: Unzip file
         run: unzip delete-all-deployments.zip -d delete-all-deployments
-        
-      - name: Change Directory
-        run: cd delete-all-deployments
-        
+
       - name: List files in unzipped directory
         run: ls -R delete-all-deployments
-        
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -37,8 +34,9 @@ jobs:
 
       - name: Delete Cloudflare Pages Project
         env:
-          CF_API_TOKEN: "FTnaUbES_HP2Uozeo38x-9zbAIklS7jJPZhJWl6x"
-          CF_ACCOUNT_ID: "d38d5c6b4f57093a125d7ae0716348aa"
-          CF_PAGES_PROJECT_NAME: "ptv"
-          CF_DELETE_ALIASED_DEPLOYMENTS: "true"
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_PAGES_PROJECT_NAME: ${{ secrets.CF_PAGES_PROJECT_NAME }}
+          CF_DELETE_ALIASED_DEPLOYMENTS: ${{ secrets.CF_DELETE_ALIASED_DEPLOYMENTS }}
         run: npm start
+        working-directory: delete-all-deployments
