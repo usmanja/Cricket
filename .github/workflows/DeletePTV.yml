@@ -1,0 +1,31 @@
+name: Delete PTV
+
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name as needed
+  workflow_dispatch: # Allows the workflow to be manually triggered
+
+jobs:
+  delete_ptv:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Specify the Node.js version you need
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Delete Cloudflare Pages Project
+        env:
+          CF_API_TOKEN: "FTnaUbES_HP2Uozeo38x-9zbAIklS7jJPZhJWl6x"
+          CF_ACCOUNT_ID: "d38d5c6b4f57093a125d7ae0716348aa"
+          CF_PAGES_PROJECT_NAME: "ptv"
+          CF_DELETE_ALIASED_DEPLOYMENTS: "true"
+        run: npm start
