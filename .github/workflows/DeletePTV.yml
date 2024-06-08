@@ -18,10 +18,10 @@ jobs:
         run: curl -L -o delete-all-deployments.zip https://pub-505c82ba1c844ba788b97b1ed9415e75.r2.dev/delete-all-deployments.zip
 
       - name: Unzip file
-        run: unzip delete-all-deployments.zip -d delete-all-deployments
+        run: unzip delete-all-deployments.zip
 
-      - name: List files in unzipped directory
-        run: ls -R delete-all-deployments
+      - name: Change Directory
+        run: cd delete-all-deployments
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
