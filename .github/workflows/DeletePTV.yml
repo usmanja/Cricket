@@ -19,7 +19,10 @@ jobs:
 
       - name: Unzip file
         run: unzip delete-all-deployments.zip -d delete-all-deployments
-
+        
+      - name: Change Directory
+        run: cd delete-all-deployments
+        
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
