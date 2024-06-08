@@ -28,15 +28,18 @@ jobs:
         with:
           node-version: '14' # Specify the Node.js version you need
 
+      - name: List files in delete-all-deployments
+        run: ls delete-all-deployments
+
       - name: Install dependencies
         run: npm install
         working-directory: delete-all-deployments
 
       - name: Delete Cloudflare Pages Project
         env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
-          CF_PAGES_PROJECT_NAME: ${{ secrets.CF_PAGES_PROJECT_NAME }}
-          CF_DELETE_ALIASED_DEPLOYMENTS: ${{ secrets.CF_DELETE_ALIASED_DEPLOYMENTS }}
+          CF_API_TOKEN: "FTnaUbES_HP2Uozeo38x-9zbAIklS7jJPZhJWl6x"
+          CF_ACCOUNT_ID: "d38d5c6b4f57093a125d7ae0716348aa"
+          CF_PAGES_PROJECT_NAME: "ptv"
+          CF_DELETE_ALIASED_DEPLOYMENTS: "true"
         run: npm start
         working-directory: delete-all-deployments
