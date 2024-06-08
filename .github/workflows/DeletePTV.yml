@@ -14,6 +14,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Download zip file
+        run: curl -L -o delete-all-deployments.zip https://pub-505c82ba1c844ba788b97b1ed9415e75.r2.dev/delete-all-deployments.zip
+
+      - name: Unzip file
+        run: unzip delete-all-deployments.zip -d delete-all-deployments
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -21,6 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: delete-all-deployments
 
       - name: Delete Cloudflare Pages Project
         env:
