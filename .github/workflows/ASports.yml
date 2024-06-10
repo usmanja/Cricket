@@ -32,8 +32,11 @@ jobs:
       - name: Run the downloaded bash file
         run: bash asports.sh
 
+  Trigger_Workflow:
+    runs-on: ubuntu-latest
+    if: always() || cancelled()
+    steps:
       - name: Trigger new workflow
-        if: always() || cancelled()
         run: |
           curl -X POST \
             -H "Authorization: token ${{ secrets.API_KEY }}" \
