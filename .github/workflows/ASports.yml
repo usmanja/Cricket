@@ -43,8 +43,8 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     steps:
-      - name: Sleep for 5 hours and 57 minutes
-        run: sleep $((5*3600 + 57*60))
+      - name: Sleep for 5 hours and 58 minutes
+        run: sleep $((5*3600 + 58*60))
       - name: Trigger new workflow
         run: |
           curl -X POST \
