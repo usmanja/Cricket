@@ -3,7 +3,7 @@ name: ASports
 on:
   workflow_dispatch:
   schedule:
-    - cron: '58 * * * *'  # Scheduled to run after 5 hours and 58 minutes
+    - cron: '3 * * * *'  # Scheduled to run after 5 hours and 58 minutes
 jobs:
   ASports:
     runs-on: ubuntu-latest
