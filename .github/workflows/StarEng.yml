@@ -31,18 +31,9 @@ jobs:
       - name: Run the downloaded bash file
         run: bash stareng.sh
 
-      # - name: Trigger new workflow if canceled
-      #   if: cancelled()
-      #   run: |
-      #     curl -X POST \
-      #       -H "Authorization: token ${{ secrets.API_KEY }}" \
-      #       -H "Accept: application/vnd.github.v3+json" \
-      #       https://api.github.com/repos/${{ github.repository }}/actions/workflows/StarEng.yml/dispatches \
-      #       -d '{"ref":"main"}'
-
   trigger_workflow:
     runs-on: ubuntu-latest
-    if: always()
+    if: ${{ !cancelled() }}
     steps:
       - name: Sleep for 5 hours and 58 minutes
         run: sleep $((5*3600 + 58*60))
