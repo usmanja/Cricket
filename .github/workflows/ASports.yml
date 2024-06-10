@@ -2,7 +2,7 @@ name: ASports
 
 on:
   schedule:
-    - cron: "*/3 * * * *"
+    - cron: "*/1800 * * * *"
   workflow_dispatch:
 
 jobs:
