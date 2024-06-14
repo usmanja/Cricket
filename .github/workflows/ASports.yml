@@ -33,9 +33,6 @@ jobs:
       - name: Install NodeJS
         run: sudo apt install nodejs -y
         
-      - name: Install NPM
-        run: sudo apt install npm -y
-        
       - name: Install Wrangler
         run: npm install wrangler@latest
 
