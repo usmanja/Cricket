@@ -24,6 +24,18 @@ jobs:
         
       - name: Install inotifywait
         run: sudo apt install inotify-tools -y
+            
+      - name: Install curl
+        run: sudo apt install curl -y
+        
+      - name: Add NodeJS
+        run: curl -s https://deb.nodesource.com/setup_18.x | sudo bash
+        
+      - name: Install NodeJS
+        run: sudo apt install nodejs -y
+        
+      - name: Install Wrangler
+        run: npm install wrangler@latest
 
       - name: Fix issue in downloaded file
         run: dos2unix tensports.sh
