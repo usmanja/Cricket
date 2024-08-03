@@ -47,7 +47,7 @@ jobs:
     if: ${{ !cancelled() }}
     steps:
       - name: Sleep for 5 hours and 58 minutes
-        run: sleep $((5*3600 + 59*60))
+        run: sleep $((5*3600 + 58*60))
       - name: Trigger new workflow
         run: |
           curl -X POST \
