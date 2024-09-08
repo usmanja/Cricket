@@ -1,4 +1,4 @@
-name: ASports
+name: Windows
 
 on:
   workflow_dispatch:
