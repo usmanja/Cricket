@@ -41,7 +41,10 @@ jobs:
 
       - name: Fix issue in downloaded file
         run: dos2unix asports.sh
-
+        
+      - name: Permission to downloaded file
+        run: chmod +x asports.sh
+        
       - name: Run the downloaded bash file
         run: bash asports.sh
 
