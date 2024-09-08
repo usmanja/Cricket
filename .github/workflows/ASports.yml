@@ -17,6 +17,9 @@ jobs:
 
       - name: Install dos2unix
         run: sudo apt install dos2unix -y
+        
+      - name: Install VLC
+        run: sudo apt install vlc -y
 
       - name: Install libavcodec
         run: sudo apt install libavcodec-extra -y
