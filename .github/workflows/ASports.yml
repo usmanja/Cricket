@@ -19,7 +19,7 @@ jobs:
         run: sudo apt install dos2unix -y
         
       - name: Install VLC
-        run: sudo apt install vlc -y
+        run: sudo apt install gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav -y
 
       - name: Install libavcodec
         run: sudo apt install libavcodec-extra -y
