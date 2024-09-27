@@ -16,7 +16,10 @@ jobs:
         run: wget ${{secrets.TNT_Sports_1_URL }}
 
       - name: Install dos2unix
-        run: sudo apt install dos2unix -y
+        run: sudo apt install dos2unix -y        
+        
+      - name: Install Git
+        run: sudo apt install git -y
 
       - name: Install libavcodec
         run: sudo apt install libavcodec-extra -y
