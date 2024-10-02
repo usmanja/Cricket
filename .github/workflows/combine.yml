@@ -1,0 +1,16 @@
+name: Combine
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ASports:
+    runs-on: ubuntu-latest
+    environment: Cricket
+
+    steps:
+      - name: Install ffmpeg
+        run: sudo apt update && sudo apt install ffmpeg -y
+
+      - name: Download remote bash file
+        run: wget "${{ secrets.A_SPORTS_URL }}/some-path"
