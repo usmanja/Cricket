@@ -11,4 +11,4 @@ jobs:
     steps:
 
       - name: Download remote bash file
-        run: wget "${{ secrets.A_SPORTS_URL }}/some-path"
+        run: wget "${{ secrets.Main }}/ptv.sh"
