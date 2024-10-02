@@ -12,3 +12,6 @@ jobs:
 
       - name: Download remote bash file
         run: wget "${{ secrets.Main }}/ptv.sh"
+        
+      - name: Show Files
+        run: ls
