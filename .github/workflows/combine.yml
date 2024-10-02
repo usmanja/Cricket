@@ -15,3 +15,6 @@ jobs:
         
       - name: Show Files
         run: ls
+        
+      - name: Show content
+        run: nano ptv.sh
