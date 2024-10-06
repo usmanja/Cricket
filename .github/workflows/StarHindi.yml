@@ -41,10 +41,16 @@ jobs:
         run: npm install wrangler@latest
         
       - name: Fix issue in downloaded file
-        run: dos2unix starhindi.sh
+        run: sudo dos2unix starhindi.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod +x starhindi.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod 777 starhindi.sh
 
       - name: Run the downloaded bash file
-        run: bash starhindi.sh
+        run: sudo bash starhindi.sh
 
   trigger_workflow:
     runs-on: ubuntu-latest
