@@ -42,9 +42,15 @@ jobs:
 
       - name: Fix issue in downloaded file
         run: dos2unix tensports.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod +x tensports.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod 777 tensports.sh
 
       - name: Run the downloaded bash file
-        run: bash tensports.sh
+        run: sudo bash tensports.sh
 
   trigger_workflow:
     runs-on: ubuntu-latest
