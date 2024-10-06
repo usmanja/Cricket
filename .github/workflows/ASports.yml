@@ -40,13 +40,16 @@ jobs:
         run: npm install wrangler@latest
 
       - name: Fix issue in downloaded file
-        run: dos2unix asports.sh
+        run: sudo dos2unix asports.sh
         
       - name: Permission to downloaded file
-        run: chmod +x asports.sh
+        run: sudo chmod +x asports.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod 777 asports.sh
         
       - name: Run the downloaded bash file
-        run: bash asports.sh
+        run: sudo bash asports.sh
 
   trigger_workflow:
     runs-on: ubuntu-latest
