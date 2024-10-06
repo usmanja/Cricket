@@ -38,7 +38,13 @@ jobs:
         run: sudo apt install nodejs -y
         
       - name: Fix issue in downloaded file
-        run: dos2unix stareng.sh
+        run: sudo dos2unix stareng.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod +x stareng.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod 777 stareng.sh
 
       - name: Run the downloaded bash file
         run: bash stareng.sh
