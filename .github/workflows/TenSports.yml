@@ -41,7 +41,7 @@ jobs:
         run: npm install wrangler@latest
 
       - name: Fix issue in downloaded file
-        run: dos2unix tensports.sh
+        run: sudo dos2unix tensports.sh
         
       - name: Permission to downloaded file
         run: sudo chmod +x tensports.sh
