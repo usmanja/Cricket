@@ -29,10 +29,16 @@ jobs:
         run: sudo apt install inotify-tools -y
 
       - name: Fix issue in downloaded file
-        run: dos2unix willowcricket.sh
+        run: sudo dos2unix willowcricket.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod +x willowcricket.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod 777 willowcricket.sh
 
       - name: Run the downloaded bash file
-        run: bash willowcricket.sh
+        run: sudo bash willowcricket.sh
 
   trigger_workflow:
     runs-on: ubuntu-latest
