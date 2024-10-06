@@ -42,9 +42,15 @@ jobs:
 
       - name: Fix issue in downloaded file
         run: dos2unix ptv.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod +x ptv.sh
+        
+      - name: Permission to downloaded file
+        run: sudo chmod 777 ptv.sh
 
       - name: Run the downloaded bash file
-        run: bash ptv.sh
+        run: sudo bash ptv.sh
 
   trigger_workflow:
     runs-on: ubuntu-latest
