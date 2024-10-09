@@ -29,7 +29,13 @@ jobs:
 
       - name: Test basic cvlc stream
         run: sudo -u newuser cvlc "http://starshare.org:8080/test5/5test/43444" --intf dummy
-
+        
+      - name: Create Folder
+        run: sudo mkdir vlc
+        
+      - name: Folder Permission
+        run: sudo chmod 777 vlc
+        
       - name: Run cvlc with transcoding
         run: |
           sudo -u newuser /usr/bin/cvlc "http://starshare.org:8080/test5/5test/43444" \
