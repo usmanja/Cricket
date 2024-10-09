@@ -9,7 +9,7 @@ jobs:
     environment: Cricket
 
     steps:
-      - name: Install ffmpeg
+      - name: Update
         run: sudo apt update
         
       - name: Checkout code
