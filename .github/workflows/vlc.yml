@@ -9,39 +9,35 @@ jobs:
     environment: Cricket
 
     steps:
-      - name: VLC using Chocolatey
+      - name: Install ffmpeg and VLC using Chocolatey
         run: |
-          # Install VLC and ffmpeg using Chocolatey package manager
           choco install vlc -y
+          choco install ffmpeg -y
 
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Create a new user
         run: |
-          # Create a new user on Windows
           net user newuser /add /passwordreq:no
           net localgroup administrators newuser /add
 
       - name: Test VLC installation
         run: |
-          # Check if VLC is installed by running cvlc version
-          & "C:\Program Files\VideoLAN\VLC\cvlc.exe" --version
+          # Check if VLC is installed by running cvlc version using the correct path
+          & "C:\ProgramData\chocolatey\lib\vlc\tools\vlc.exe" --version
 
       - name: Create Folder and set permissions
         run: |
-          # Create folder for VLC streams and set full access
           New-Item -Path C:\Users\newuser\vlc -ItemType Directory
           icacls C:\Users\newuser\vlc /grant newuser:(OI)(CI)F
 
       - name: Run basic cvlc stream (no video, no audio)
         run: |
-          # Run basic VLC stream without video or audio
-          & "C:\Program Files\VideoLAN\VLC\cvlc.exe" "http://starshare.org:8080/test5/5test/43444" --no-video --no-audio --intf dummy --no-dbus
+          & "C:\ProgramData\chocolatey\lib\vlc\tools\vlc.exe" "http://starshare.org:8080/test5/5test/43444" --no-video --no-audio --intf dummy --no-dbus
 
       - name: Run cvlc with transcoding
         run: |
-          # Run VLC stream with transcoding to H264
-          & "C:\Program Files\VideoLAN\VLC\cvlc.exe" "http://starshare.org:8080/test5/5test/43444" --no-video --no-audio --intf dummy --no-dbus `
+          & "C:\ProgramData\chocolatey\lib\vlc\tools\vlc.exe" "http://starshare.org:8080/test5/5test/43444" --no-video --no-audio --intf dummy --no-dbus `
           --sout "#transcode{vcodec=h264,vb=300,acodec=mp4a,ab=48,channels=2}:std{access=livehttp{seglen=10,delsegs=true,numsegs=5,index='C:/Users/newuser/vlc/stream.m3u8',index-url='segment-########.ts'},mux=ts{use-key-frames},dst='C:/Users/newuser/vlc/segment-########.ts'}" `
           --sout-all --sout-keep
