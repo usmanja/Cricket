@@ -9,7 +9,7 @@ jobs:
     environment: Cricket
 
     steps:
-      - name: Install ffmpeg and VLC using Chocolatey
+      - name: VLC using Chocolatey
         run: |
           # Install VLC and ffmpeg using Chocolatey package manager
           choco install vlc -y
