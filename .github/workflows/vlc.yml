@@ -1,10 +1,10 @@
-name: ASports
+name: VLC
 
 on:
   workflow_dispatch:
 
 jobs:
-  ASports:
+  VLC:
     runs-on: ubuntu-latest
     environment: Cricket
 
