@@ -9,10 +9,9 @@ jobs:
     environment: Cricket
 
     steps:
-      - name: Install ffmpeg and VLC
+      - name: Install VLC
         run: |
           sudo apt update
-          sudo apt install ffmpeg -y
           sudo apt-get install -y vlc
 
       - name: Checkout code
