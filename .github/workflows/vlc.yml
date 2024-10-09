@@ -9,9 +9,10 @@ jobs:
     environment: Cricket
 
     steps:
-      - name: Install VLC
+      - name: Install ffmpeg and VLC
         run: |
           sudo apt update
+          sudo apt install ffmpeg -y
           sudo apt-get install -y vlc
 
       - name: Checkout code
@@ -34,7 +35,7 @@ jobs:
       - name: Run basic cvlc stream (no video, no audio)
         run: |
           sudo -u newuser XDG_RUNTIME_DIR=/tmp HOME=/home/newuser /usr/bin/cvlc "http://starshare.org:8080/test5/5test/43444" \
-          --no-dbus --intf dummy --no-globalhotkeys --no-video --no-audio
+          --no-dbus --intf dummy --no-video --no-audio
 
       - name: Run cvlc with transcoding
         run: |
