@@ -41,7 +41,7 @@ jobs:
         
       - name: Run cvlc with transcoding
         run: |
-          sudo -u newuser /usr/bin/cvlc "http://starshare.org:8080/test5/5test/43444" \
+          sudo -u newuser cvlc "http://starshare.org:8080/test5/5test/43444" \
           --no-dbus --intf dummy --http-reconnect --aout=file --no-globalhotkeys \
           --sout '#transcode{vcodec=h264,vb=300,acodec=mp4a,ab=48,channels=2}:std{access=livehttp{seglen=10,delsegs=true,numsegs=5,index="stream.m3u8",index-url="segment-########.ts"},mux=ts{use-key-frames},dst="segment-########.ts"}' \
           --sout-all --sout-keep
