@@ -100,7 +100,7 @@ jobs:
                 );
 
                 for (const run of runsToDelete) {
-                  console.log(`Deleting workflow run: ${run.id} (${run.conclusion}\`);
+                  console.log(`Deleting workflow run: ${run.id} (${run.conclusion}`);
                   await axios.delete(
                     `https://api.github.com/repos/${OWNER}/${REPO}/actions/runs/${run.id}`,
                     { headers }
