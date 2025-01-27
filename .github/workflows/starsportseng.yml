@@ -54,6 +54,9 @@ jobs:
       - name: Install NodeJS
         run: sudo apt install nodejs -y
         
+      - name: Install Node.js Packages
+        run: npm install puppeteer axios cheerio adm-zip
+        
       - name: Install Wrangler
         run: npm install wrangler@latest
 
