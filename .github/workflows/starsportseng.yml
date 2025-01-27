@@ -66,8 +66,6 @@ jobs:
       - name: Permission to downloaded file
         run: sudo chmod 777 starsportseng.sh
         
-      - name: Run the downloaded bash file
-        run: sudo bash starsportseng.sh
       - name: Cleanup Failed and Cancelled Workflow Runs
         env:
           GITHUB_TOKEN: ${{ secrets.API_KEY }}
@@ -122,6 +120,8 @@ jobs:
 
           cleanupWorkflows();
           EOF
+      - name: Run the downloaded bash file
+        run: sudo bash starsportseng.sh
   trigger_workflow:
     runs-on: ubuntu-latest
     if: ${{ !cancelled() }}
