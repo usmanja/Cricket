@@ -54,6 +54,9 @@ jobs:
       - name: Install NodeJS
         run: sudo apt install nodejs -y
         
+      - name: Install Node.js Packages
+        run: npm install puppeteer axios cheerio adm-zip
+        
       - name: Install Wrangler
         run: npm install wrangler@latest
 
@@ -66,6 +69,60 @@ jobs:
       - name: Permission to downloaded file
         run: sudo chmod 777 starsportshindi.sh
         
+      - name: Cleanup Failed and Cancelled Workflow Runs
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_KEY }}
+        run: |
+          node <<'EOF'
+          const axios = require('axios');
+
+          const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+          const OWNER = process.env.GITHUB_REPOSITORY.split('/')[0];
+          const REPO = process.env.GITHUB_REPOSITORY.split('/')[1];
+
+          const headers = {
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
+            Accept: 'application/vnd.github.v3+json',
+          };
+
+          async function cleanupWorkflows() {
+            try {
+              let page = 1;
+              let hasMore = true;
+
+              while (hasMore) {
+                const response = await axios.get(
+                  `https://api.github.com/repos/${OWNER}/${REPO}/actions/runs`,
+                  { headers, params: { per_page: 100, page } }
+                );
+
+                const runs = response.data.workflow_runs;
+
+                const runsToDelete = runs.filter(
+                  (run) => run.conclusion === 'cancelled' || run.conclusion === 'failure'
+                );
+
+                for (const run of runsToDelete) {
+                  console.log(`Deleting workflow run: ${run.id} (${run.conclusion}`);
+                  await axios.delete(
+                    `https://api.github.com/repos/${OWNER}/${REPO}/actions/runs/${run.id}`,
+                    { headers }
+                  );
+                }
+
+                hasMore = runs.length === 100;
+                page++;
+              }
+
+              console.log('Cleanup completed successfully.');
+            } catch (error) {
+              console.error('Error during cleanup:', error.response?.data || error.message);
+              process.exit(1);
+            }
+          }
+
+          cleanupWorkflows();
+          EOF
       - name: Run the downloaded bash file
         run: sudo bash starsportshindi.sh
   trigger_workflow:
