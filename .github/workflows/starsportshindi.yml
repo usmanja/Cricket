@@ -6,7 +6,7 @@ on:
 jobs:
   starsportshindi:
     runs-on: ubuntu-latest
-    environment: Cricket
+    environment: Football
 
     steps:
       - name: Install ffmpeg 
@@ -18,13 +18,13 @@ jobs:
         run: sudo bash fluss.sh
 
       - name: Download remote bash file
-        run: wget ${{ secrets.CRICKET_PORTAL_URL }}/bash/starsportshindi.sh || echo "Primary URL download failed"
+        run: wget ${{ secrets.FOOTBALL_PORTAL_URL }}/bash/starsportshindi.sh || echo "Primary URL download failed"
         
       - name: Check if bash file exists and download from backup if not
         run: |
           if [ ! -f starsportshindi.sh ]; then
             echo "Primary URL file not found, downloading from backup URL"
-            wget ${{ secrets.CRICKET_BACKUP_BASH_URL }}/starsportshindi.sh
+            wget ${{ secrets.FOOTBALL_BACKUP_BASH_URL }}/starsportshindi.sh
           else
             echo "Bash file downloaded successfully"
           fi
@@ -59,12 +59,6 @@ jobs:
         
       - name: Install Wrangler
         run: npm install wrangler@latest
-        
-      - name: Download Cloudflare Tunnel
-        run: curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb  
-        
-      - name: Install Cloudflare Tunnel
-        run:  sudo dpkg -i cloudflared.deb
 
       - name: Fix issue in downloaded file
         run: sudo dos2unix starsportshindi.sh
