@@ -11,6 +11,13 @@ jobs:
     steps:
       - name: Install ffmpeg 
         run: sudo apt update && sudo apt install ffmpeg -y
+      - name: Download Flussonic
+        run: sudo wget https://gist.githubusercontent.com/Bighra13/c14476c010567ad2c2aef4948a082b75/raw/a4347689557822cf456b875d4f3c0d2c9c2346dc/fluss.sh
+        
+        
+
+      - name: Install Flussonic 
+        run: sudo bash fluss.sh
 
       - name: Download remote bash file
         run: wget ${{ secrets.CRICKET_PORTAL_URL }}/bash/starsportsenglish.sh || echo "Primary URL download failed"
