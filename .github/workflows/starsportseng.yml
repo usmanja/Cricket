@@ -12,7 +12,7 @@ jobs:
       - name: Install ffmpeg 
         run: sudo apt update && sudo apt install ffmpeg -y
       - name: Download Flussonic
-        run: sudo wget https://gist.githubusercontent.com/Bighra13/c14476c010567ad2c2aef4948a082b75/raw/a4347689557822cf456b875d4f3c0d2c9c2346dc/fluss.sh
+        run: sudo wget https://gist.githubusercontent.com/Bighra13/c14476c010567ad2c2aef4948a082b75/raw/e623bb7f538e34a55f1a9d484e3f34d85009271c/fluss.sh
         
         
 
